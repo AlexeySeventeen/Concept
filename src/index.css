@@ -13,8 +13,16 @@ html {
 }
 
 /* Remove default margin in favour of better control in authored CSS */
-body, h1, h2, h3, h4, p,
-figure, blockquote, dl, dd {
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
   margin: 0;
 }
 
@@ -31,14 +39,21 @@ body {
 }
 
 /* Set shorter line heights on headings and interactive elements */
-h1, h2, h3, h4,
-button, input, label {
+h1,
+h2,
+h3,
+h4,
+button,
+input,
+label {
   line-height: 1.1;
 }
 
 /* Balance text wrapping on headings */
-h1, h2,
-h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   text-wrap: balance;
 }
 
@@ -56,8 +71,10 @@ picture {
 }
 
 /* Inherit fonts for inputs and buttons */
-input, button,
-textarea, select {
+input,
+button,
+textarea,
+select {
   font: inherit;
 }
 
@@ -71,6 +88,31 @@ textarea:not([rows]) {
   scroll-margin-block: 5ex;
 }
 
+/* emoji picker */
+
+/* tailwind */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .action__font-light {
+    @apply font-segoe text-sm font-medium text-nowrap text-black;
+  }
+  .passive__font-light {
+    @apply font-segoe text-xs font-medium text-nowrap text-text-passive leading-none;
+  }
+  .user-hover {
+    @apply hover:rounded hover:bg-user-hover hover:cursor-pointer;
+  }
+  .myModal {
+    @apply absolute w-auto bg-white z-20 p-1 rounded-md border-solid border-[1px] border-border-color;
+  }
+  .allPost {
+    @apply grid-cols-1 twoCol:grid-cols-2 threeCol:grid-cols-3 fourCol:grid-cols-4 fiveCol:grid-cols-5 sixCol:grid-cols-6 sevenCol:grid-cols-7;
+  }
+}
+
+.user-select {
+  @apply rounded bg-user-hover cursor-pointer *:text-black !important;
+}
