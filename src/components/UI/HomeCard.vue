@@ -1,5 +1,10 @@
 <template>
-  <div class="w-36 h-36 p-3 cursor-pointer rounded-lg border-solid border-[1px] border-border-color hover:border-black relative">
+  <div
+    @click="openPost"
+    @keydown.enter="openPost"
+    tabindex="1"
+    :class="{'hover:border-white shadow-dark': this.$store.state.theme === 'Dark', 'hover:border-black shadow-light': this.$store.state.theme === 'Light'}"
+    class="scale-up-center w-36 h-36 p-3 cursor-pointer rounded-lg border-solid border-[1px] border-border-color relative dark:bg-black dark:border-text-passive">
     <div class="h-5 w-5">{{ project.img }}</div>
     <svg
       v-if="project.isFavorite"
@@ -13,8 +18,8 @@
     </svg>
     <svg
       v-if="project.isArchive"
-      :class="{'right-[25px]': project.isFavorite}"
-      class="absolute top-[4px] right-[5px] w-6 h-5"
+      :class="{'!right-[23px]': project.isFavorite}"
+      class="absolute top-[4px] right-[5px] w-6 h-5 dark:fill-text-passive dark:stroke-text-passive"
       viewBox="0 0 24 24"
       fill="#000000"
       xmlns="http://www.w3.org/2000/svg"
@@ -28,8 +33,9 @@
     </h1>
     <h1 v-else class="w-[120px] action__font-light text-xl h-[76px] text-wrap leading-tight text-ellipsis overflow-hidden">{{ project.title }}</h1>
     <div>
-      <p class="passive__font-light">Last edited:</p>
-      <p class="passive__font-light">{{ project.lastChange }}</p>
+      <p v-if="this.$store.state.language === 'English'" class="passive__font-light">Last edited:</p>
+      <p v-if="this.$store.state.language === 'Russian'" class="passive__font-light ml-[-6px]">Последние изменения:</p>
+      <p class="passive__font-light" :class="{'ml-[-2px]': this.$store.state.language === 'Russian'}">{{ project.lastChange }}</p>
     </div>
   </div>
 </template>
@@ -40,7 +46,47 @@ export default {
   props: {
     project: Object,
   },
+  methods: {
+    openPost() {
+      this.$store.commit('setCurrentProject', this.project);
+      this.$router.push('/Home/prj' + this.project.lastChangeSort);
+      localStorage.setItem('currentProject', JSON.stringify(this.project));
+    },
+  },
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.scale-up-center {
+  -webkit-animation: scale-up-center 0.5s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  animation: scale-up-center 0.5s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+
+.shadow-light {
+  box-shadow: 2px 8px 20px -12px rgba(0, 0, 0, 0.35);
+}
+.shadow-dark {
+  box-shadow: 2px 8px 20px -12px rgba(255, 255, 255, 0.4);
+}
+
+@-webkit-keyframes scale-up-center {
+  0% {
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+@keyframes scale-up-center {
+  0% {
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+</style>

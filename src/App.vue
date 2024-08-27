@@ -1,11 +1,20 @@
 <template>
-  <div class="bg-nav-bg-light h-screen flex flex-row relative">
+  <div class="bg-nav-bg-light h-screen flex flex-row relative dark:bg-black">
     <!-- openNav -->
     <button
-      class="absolute top-[5px] left-[5px] user-hover p-1 after:top-[30px] after:right-[-56px] hover:absolute"
-      v-if="!showNav"
+      :class="{'user-hover': this.$store.state.theme === 'Light', 'user-hover-dark border-0': this.$store.state.theme === 'Dark'}"
+      class="absolute top-[5px] left-[5px] p-1 after:top-[30px] after:right-[-56px] hover:absolute"
+      v-if="!showNav && this.$store.state.language === 'English'"
       @click="this.showNav = true"
       data-title="Open sidebar">
+      <img class="h-5 w-5" src="./components/AllSvg/NavSvg/nav-open.svg" alt="show nav" />
+    </button>
+    <button
+      :class="{'user-hover': this.$store.state.theme === 'Light', 'user-hover-dark border-0': this.$store.state.theme === 'Dark'}"
+      class="absolute top-[5px] left-[5px] p-1 after:top-[30px] after:right-[-66px] hover:absolute"
+      v-if="!showNav && this.$store.state.language === 'Russian'"
+      @click="this.showNav = true"
+      data-title="Открыть меню">
       <img class="h-5 w-5" src="./components/AllSvg/NavSvg/nav-open.svg" alt="show nav" />
     </button>
 
@@ -15,21 +24,22 @@
 </template>
 
 <script>
-import axios from 'axios';
-
 export default {
   data() {
     return {
       id: 0,
       showNav: false,
+      theme: this.$store.state.theme,
     };
   },
 
   mounted() {
-    axios.get('https://aa9aa081e8c8442e.mokky.dev/profiles').then((result) => this.$store.commit('setName', result.data[this.id].name));
-    axios.get('https://aa9aa081e8c8442e.mokky.dev/items?id=' + this.$store.state.id).then((result) => {
-      this.$store.commit('setProjects', result.data[0].projects);
-    });
+    if (this.$store.state.theme === 'Dark' && document.querySelector('html').classList.contains('dark') === false) {
+      document.querySelector('html').classList.add('dark');
+    }
+    if (this.$store.state.theme === 'Light' && document.querySelector('html').classList.contains('dark') === true) {
+      document.querySelector('html').classList.remove('dark');
+    }
   },
 };
 </script>
@@ -81,6 +91,9 @@ input[type='range']::-webkit-slider-thumb:hover {
   padding: 2px 6px;
 }
 .nav-basic[data-title]:hover::after {
-  width: 200px;
+  width: 230px;
+}
+.marginForH h3 {
+  margin-top: -1px;
 }
 </style>

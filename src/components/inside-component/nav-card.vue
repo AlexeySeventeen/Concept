@@ -1,8 +1,14 @@
 <template>
-  <button :data-title="this.title" class="flex relative user-hover py-0.5 w-44" @click="this.$emit('basicClick', this.text)">
-    <img class="h-5 w-5 ml-px" :src="require('../AllSvg/NavSvg/' + this.text + '.svg')" />
-    <h3 v-if="this.stopTextClick" @click.stop="this.$emit('basicClick', this.text)" class="action__font-light leading-5 ml-2">{{ this.text }}</h3>
-    <h3 v-else class="action__font-light leading-5 ml-2">{{ this.text }}</h3>
+  <button
+    @click.stop
+    :data-title="this.title"
+    :class="{'user-hover': this.$store.state.theme === 'Light', 'user-hover-dark': this.$store.state.theme === 'Dark'}"
+    class="flex relative py-0.5 w-44 dark:bg-black mb-[1px] dark:rounded"
+    @click="this.$emit('basicClick', this.text), this.$emit('basicClickRu', this.svg)"
+    @keydown.enter="this.$emit('enterClick', this.text)">
+    <img v-if="this.$store.state.language === 'English'" class="h-5 w-5 ml-px" :src="require('../AllSvg/NavSvg/' + this.text + '.svg')" />
+    <img v-if="this.$store.state.language === 'Russian'" class="h-5 w-5 ml-px" :src="require('../AllSvg/NavSvg/' + this.svg + '.svg')" />
+    <h3 class="action__font-light leading-5 ml-2 text-text-passive">{{ this.text }}</h3>
     <slot></slot>
   </button>
 </template>
@@ -14,7 +20,7 @@ export default {
   props: {
     text: String,
     title: String,
-    stopTextClick: Boolean,
+    svg: String,
   },
 };
 </script>

@@ -97,22 +97,33 @@ textarea:not([rows]) {
 
 @layer components {
   .action__font-light {
-    @apply font-segoe text-sm font-medium text-nowrap text-black;
+    @apply font-segoe text-sm font-medium text-nowrap text-black dark:text-white;
   }
   .passive__font-light {
-    @apply font-segoe text-xs font-medium text-nowrap text-text-passive leading-none;
+    @apply font-segoe text-xs font-medium text-nowrap text-text-passive leading-none dark:text-text-passive;
   }
   .user-hover {
     @apply hover:rounded hover:bg-user-hover hover:cursor-pointer;
   }
+  .user-hover-dark {
+    @apply hover:rounded border hover:bg-user-hover-dark hover:border-text-passive hover:cursor-pointer;
+  }
   .myModal {
-    @apply absolute w-auto bg-white z-20 p-1 rounded-md border-solid border-[1px] border-border-color;
+    @apply absolute w-auto bg-white z-20 p-1 rounded-md border-solid border-[1px] border-border-color dark:border-text-passive;
   }
   .allPost {
     @apply grid-cols-1 twoCol:grid-cols-2 threeCol:grid-cols-3 fourCol:grid-cols-4 fiveCol:grid-cols-5 sixCol:grid-cols-6 sevenCol:grid-cols-7;
   }
-}
-
-.user-select {
-  @apply rounded bg-user-hover cursor-pointer *:text-black !important;
+  .settingText {
+    @apply action__font-light text-xl px-2 min-w-32;
+  }
+  .myButton {
+    @apply action__font-light px-1 py-2 min-w-24 rounded-xl;
+  }
+  .user-select {
+    @apply rounded bg-user-hover cursor-pointer;
+  }
+  .user-select-dark {
+    @apply rounded border border-solid border-text-passive bg-user-hover-dark cursor-pointer;
+  }
 }

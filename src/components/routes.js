@@ -3,10 +3,15 @@ import CompSearch from './Component/CompSearch.vue';
 import CompFavorite from './Component/CompFavorite.vue';
 import CompArchive from './Component/CompArchive.vue';
 import CompSettings from './Component/CompSettings.vue';
+import CompRegistration from './Component/CompRegistration.vue';
 import Project from './UI/Project.vue';
 import {createRouter, createWebHistory} from 'vue-router';
 
 const routes = [
+  {
+    path: '/',
+    component: CompRegistration,
+  },
   {
     path: '/Home',
     component: CompHome,
