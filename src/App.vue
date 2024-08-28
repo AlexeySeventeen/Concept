@@ -96,4 +96,8 @@ input[type='range']::-webkit-slider-thumb:hover {
 .marginForH h3 {
   margin-top: -1px;
 }
+.focus-visible-border:focus {
+  outline: 0;
+  border: 1px white solid !important;
+}
 </style>

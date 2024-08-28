@@ -51,12 +51,13 @@
         <div class="flex gap-2 overflow-y-scroll">
           <HomeCard
             v-for="item in this.$store.getters.sortProjects('Last edit', '7 items')"
-            class="inline-block focus-visible:!border focus-visible:!border-white"
+            class="inline-block my-1 first:ml-px"
             :key="item.title"
             :project="item" />
         </div>
 
         <button
+          tabindex="1"
           @click="createNewPost"
           :class="{'hover:bg-user-hover': this.$store.state.theme === 'Light', 'hover:bg-user-hover-dark': this.$store.state.theme === 'Dark'}"
           class="flex justify-center w-full my-2.5 py-1.5 hover:cursor-pointer passive__font-light text-lg border-y border-solid border-border-color dark:border-text-passive">

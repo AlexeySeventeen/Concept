@@ -123,8 +123,8 @@
               (newBgColor) => ((this.sixPointOpen = false), $store.commit('changeBgColorToggle', {newText: newBgColor.value, id: this.id, mainId: this.mainId}))
             "></nav-card-select>
           <nav-card
-          class="dark:*:text-white w-[242px]"
-          @basicClickRu="(info) => ((this.sixPointOpen = false), $store.commit('changeStringToggle', {info: info, id: this.id, mainId: this.mainId}))"
+            class="dark:*:text-white w-[242px]"
+            @basicClickRu="(info) => ((this.sixPointOpen = false), $store.commit('changeStringToggle', {info: info, id: this.id, mainId: this.mainId}))"
             v-for="item in [
               {value: 'Add New String', text: 'Добавить строку'},
               {value: 'Delete', text: 'Удалить'},
@@ -154,7 +154,7 @@
         'after:text-black': $store.state.theme === 'Dark',
         'after:text-text-passive': $store.state.theme === 'Light',
       }"
-      class="outline-0 w-full min-h-7"
+      class="outline-0 w-full pr-8 min-h-7"
       contenteditable="true">
       {{ this.$store.state.currentProject.string[this.mainId].content[this.id].content }}
     </div>
@@ -177,7 +177,7 @@
         'after:text-black': $store.state.theme === 'Dark',
         'after:text-text-passive': $store.state.theme === 'Light',
       }"
-      class="outline-0 w-full min-h-11 text-3xl"
+      class="outline-0 w-full pr-8 min-h-11 text-3xl"
       contenteditable="true">
       {{ this.$store.state.currentProject.string[this.mainId].content[this.id].content }}
     </div>
@@ -200,7 +200,7 @@
         'after:text-black': $store.state.theme === 'Dark',
         'after:text-text-passive': $store.state.theme === 'Light',
       }"
-      class="outline-0 w-full min-h-9 text-2xl"
+      class="outline-0 w-full pr-8 min-h-9 text-2xl"
       contenteditable="true">
       {{ this.$store.state.currentProject.string[this.mainId].content[this.id].content }}
     </div>
@@ -223,12 +223,12 @@
         'after:text-black': $store.state.theme === 'Dark',
         'after:text-text-passive': $store.state.theme === 'Light',
       }"
-      class="outline-0 w-full min-h-7 text-xl"
+      class="outline-0 w-full pr-8 min-h-7 text-xl"
       contenteditable="true">
       {{ this.$store.state.currentProject.string[this.mainId].content[this.id].content }}
     </div>
 
-    <div v-if="this.$store.state.currentProject.string[this.mainId].content[this.id].type === 'toggle'" class="relative w-[98%] min-h-7">
+    <div v-if="this.$store.state.currentProject.string[this.mainId].content[this.id].type === 'toggle'" class="relative w-[92%] min-h-7">
       <p class="absolute top-[-1px]">●</p>
       <div
         @input="(item) => $store.commit('changeTextToggle', {newText: item.target.outerText, id: this.id, mainId: this.mainId})"
@@ -253,7 +253,7 @@
       </div>
     </div>
 
-    <div v-if="this.$store.state.currentProject.string[this.mainId].content[this.id].type === 'todo'" class="relative w-[98%] min-h-7">
+    <div v-if="this.$store.state.currentProject.string[this.mainId].content[this.id].type === 'todo'" class="relative w-[92%] min-h-7">
       <input
         :checked="this.$store.state.currentProject.string[this.mainId].content[this.id].toDoActieve"
         type="checkbox"
@@ -290,7 +290,7 @@
       </div>
     </div>
 
-    <div v-if="this.$store.state.currentProject.string[this.mainId].content[this.id].type === 'quote'" class="relative w-[98%] min-h-7">
+    <div v-if="this.$store.state.currentProject.string[this.mainId].content[this.id].type === 'quote'" class="relative w-[92%] min-h-7">
       <div class="absolute h-full w-1 bg-black"></div>
       <div
         @input="(item) => $store.commit('changeTextToggle', {newText: item.target.outerText, id: this.id, mainId: this.mainId})"
@@ -315,7 +315,7 @@
       </div>
     </div>
 
-    <div v-if="this.$store.state.currentProject.string[this.mainId].content[this.id].type === 'number'" class="w-[98%] min-h-7">
+    <div v-if="this.$store.state.currentProject.string[this.mainId].content[this.id].type === 'number'" class="w-[92%] min-h-7">
       <div
         class="relative"
         :style="{

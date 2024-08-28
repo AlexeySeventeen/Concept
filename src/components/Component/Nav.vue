@@ -110,14 +110,14 @@
           </button>
         </div>
 
-        <div v-if="openList" class="mt-1 max-w-44 heightClass overflow-y-scroll overflow-x-hidden">
+        <div v-if="openList" class="mt-1 max-w-44 heightClass overflow-y-scroll">
           <TransitionGroup name="post-list">
             <nav-post
               v-for="item in this.$store.getters.sortProjects(this.thisSort, this.thisShow)"
               :key="item"
               @click="$store.commit('setCurrentProject', item), $router.push('/Home/prj' + item.lastChangeSort)"
               :item="item"
-              class="nav-basic w-full mb-0.5 after:right-[-287px] after:top-0.5 focus-visible:!border focus-visible:!border-white"
+              class="nav-basic w-full mb-0.5 first:mt-px"
               :class="{'user-select *:text-black dark:user-select-dark dark:*:text-white': '/Home/prj' + item.lastChangeSort == this.thisSelect}">
             </nav-post>
           </TransitionGroup>
