@@ -21,7 +21,7 @@
           :key="item.name"
           @click="$router.push('/' + item.value)"
           class="nav-basic w-full mb-0.5 after:right-[-240px] after:top-0.5"
-          :class="{'user-select *:text-black dark:user-select-dark dark:*:text-white': '/' + item.name == this.thisSelect}"
+          :class="{'user-select *:text-black dark:user-select-dark dark:*:text-white': '/' + item.value == this.thisSelect}"
           :text="item.text"
           :svg="item.value"
           :title="item.title"></nav-card>

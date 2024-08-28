@@ -53,14 +53,14 @@
       <button class="myButton flex border border-solid h-7 relative dark:bg-text-passive" @click="changeTheme">
         <transition-group name="slide-up">
           <div v-if="this.theme === 'Light'" class="top-[3px] left-[15px] flex items-center absolute">
-            <p v-if="this.$store.state.language === 'English'">Light</p>
+            <p v-if="this.$store.state.language === 'English'" class="ml-[7px]">Light</p>
             <p v-if="this.$store.state.language === 'Russian'" class="ml-[-4px]">Светлая</p>
-            <img class="h-5 w-5 ml-4" src="../AllSvg/SelectSvg/sun.svg" alt="sun" />
+            <img class="h-5 w-5 ml-1" src="../AllSvg/SelectSvg/sun.svg" alt="sun" />
           </div>
           <div v-if="this.theme === 'Dark'" class="top-[3px] left-[15px] flex items-center absolute">
-            <p v-if="this.$store.state.language === 'English'">Dark</p>
+            <p v-if="this.$store.state.language === 'English'" class="mr-2">Dark</p>
             <p v-if="this.$store.state.language === 'Russian'">Тёмная</p>
-            <img v-if="this.$store.state.language === 'English'" class="h-5 w-5 ml-4" src="../AllSvg/SelectSvg/moon.svg" alt="moon" />
+            <img v-if="this.$store.state.language === 'English'" class="h-5 w-5 ml-1" src="../AllSvg/SelectSvg/moon.svg" alt="moon" />
             <img v-if="this.$store.state.language === 'Russian'" class="h-5 w-5 ml-1" src="../AllSvg/SelectSvg/moon.svg" alt="moon" />
           </div>
         </transition-group>
