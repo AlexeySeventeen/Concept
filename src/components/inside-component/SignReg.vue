@@ -86,6 +86,7 @@ export default {
 
   methods: {
     registration() {
+      localStorage.clear();
       this.validationPassword();
       this.filledFullNameFn();
       this.emailCheck();
@@ -109,8 +110,6 @@ export default {
           .then(() => {
             axios.get('https://aa9aa081e8c8442e.mokky.dev/profiles').then((response) => {
               const item = response.data.pop();
-
-              localStorage.clear();
 
               this.$store.commit('setId', item.id);
               localStorage.setItem('id', JSON.stringify(item.id));
@@ -145,7 +144,7 @@ export default {
                 string: [{type: 'text', content: '', Align: 'left', Color: thisColor, BgColor: 'Transparent'}],
               };
 
-              this.$store.commit('createNewPost', emptyObject);
+              this.$store.commit('setProjects', [emptyObject]);
               localStorage.setItem('projects', JSON.stringify(this.$store.state.projects));
               this.$store.commit('setLoading', false);
             }, 1000);
