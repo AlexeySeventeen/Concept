@@ -1,6 +1,6 @@
 <template>
   <div class="bg-nav-bg-light h-screen flex flex-row relative dark:bg-black">
-    <!-- openNav btn-->
+    <!-- openNav-->
     <button
       :class="{'user-hover': this.$store.state.theme === 'Light', 'user-hover-dark border-0': this.$store.state.theme === 'Dark'}"
       class="absolute top-[5px] left-[5px] p-1 after:top-[30px] after:right-[-56px] hover:absolute"
