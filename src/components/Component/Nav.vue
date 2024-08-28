@@ -117,7 +117,7 @@
               :key="item"
               @click="$store.commit('setCurrentProject', item), $router.push('/Home/prj' + item.lastChangeSort)"
               :item="item"
-              class="nav-basic w-full mb-0.5 after:right-[-287px] after:top-0.5"
+              class="nav-basic w-full mb-0.5 after:right-[-287px] after:top-0.5 focus-visible:!border focus-visible:!border-white"
               :class="{'user-select *:text-black dark:user-select-dark dark:*:text-white': '/Home/prj' + item.lastChangeSort == this.thisSelect}">
             </nav-post>
           </TransitionGroup>

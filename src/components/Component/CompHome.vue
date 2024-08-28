@@ -49,7 +49,11 @@
           Последние изменённые
         </p>
         <div class="flex gap-2 overflow-y-scroll">
-          <HomeCard v-for="item in this.$store.getters.sortProjects('Last edit', '7 items')" class="inline-block" :key="item.title" :project="item" />
+          <HomeCard
+            v-for="item in this.$store.getters.sortProjects('Last edit', '7 items')"
+            class="inline-block focus-visible:!border focus-visible:!border-white"
+            :key="item.title"
+            :project="item" />
         </div>
 
         <button
