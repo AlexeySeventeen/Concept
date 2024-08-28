@@ -138,7 +138,7 @@
         'after:text-black': $store.state.theme === 'Dark',
         'after:text-text-passive': $store.state.theme === 'Light',
       }"
-      class="outline-0 w-full min-h-7"
+      class="outline-0 w-full pr-8 min-h-7"
       contenteditable="true">
       {{ $store.state.currentProject.string[this.id].content }}
     </div>
@@ -158,7 +158,7 @@
         'after:text-black': $store.state.theme === 'Dark',
         'after:text-text-passive': $store.state.theme === 'Light',
       }"
-      class="outline-0 w-full min-h-11 text-3xl"
+      class="outline-0 w-full pr-8 min-h-11 text-3xl"
       contenteditable="true">
       {{ $store.state.currentProject.string[this.id].content }}
     </div>
@@ -178,7 +178,7 @@
         'after:text-black': $store.state.theme === 'Dark',
         'after:text-text-passive': $store.state.theme === 'Light',
       }"
-      class="outline-0 w-full min-h-9 text-2xl"
+      class="outline-0 w-full pr-8 min-h-9 text-2xl"
       contenteditable="true">
       {{ $store.state.currentProject.string[this.id].content }}
     </div>
@@ -198,7 +198,7 @@
         'after:text-black': $store.state.theme === 'Dark',
         'after:text-text-passive': $store.state.theme === 'Light',
       }"
-      class="outline-0 w-full min-h-7 text-xl"
+      class="outline-0 w-full pr-8 min-h-7 text-xl"
       contenteditable="true">
       {{ $store.state.currentProject.string[this.id].content }}
     </div>
@@ -339,7 +339,7 @@
 
     <div
       v-if="$store.state.currentProject.string[this.id].type === 'table'"
-      class="w-full flex ml-4"
+      class="w-full pr-8 flex ml-4"
       :class="{
         'justify-start': $store.state.currentProject.string[this.id].Align === 'left',
         'justify-center': $store.state.currentProject.string[this.id].Align === 'center',
@@ -414,7 +414,7 @@
                 ]"
                 @click="tableOpen(indexCol, 'col')"
                 v-if="indexRow === 0"
-                class="flex justify-center w-full h-4 absolute top-[-18px] left-0 showBtn forAnimation">
+                class="flex justify-center w-full pr-8 h-4 absolute top-[-18px] left-0 showBtn forAnimation">
                 <svg
                   :class="'TableRowModal' + this.id"
                   class="fill-text-passive dark:fill-black rotate-90 w-4 hidden showSvg"
